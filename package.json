@@ -1,0 +1,20 @@
+{
+  "name": "laboration-1-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node src/server.js"
+  },
+  "devDependencies": {
+    "vite": "^8.0.1"
+  },
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "sass": "^1.98.0"
+  }
+}
