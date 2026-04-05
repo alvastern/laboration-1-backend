@@ -9,6 +9,14 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+app.get("/addCourse", (req, res) => {
+    res.render("addCourse");
+});
+
+app.get("/about", (req, res) => {
+    res.render("about");
+});
+
 // Starta applikationen - vilken port servern ska lyssna på
 app.listen(port, () => {
     console.log("Servern körs i porten " + port);
