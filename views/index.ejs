@@ -23,8 +23,8 @@
         <ul id="yourCourses">
             <% courses.forEach(course => { %>
                 <li>
-                    <strong><%= course.coursename %></strong>
-                    (<%= course.coursecode %>) - <%= course.progression %>
+                    <strong><%= course.courseName %></strong>
+                    (<%= course.courseCode %>) - <%= course.progression %>
                     <a href="<%= course.syllabus %>" target="_blank">Kursplan</a>
                 </li>
             <% }) %>

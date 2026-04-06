@@ -5,16 +5,23 @@ app.use(express.static('public'));  // Gör att servern kan hantera statiska fil
 app.set('view engine', 'ejs');
 
 // Routing - hanterar get-anrop till URL
-app.get("/", (req, res) => {
-    res.render("index");
-});
-
 app.get("/addCourse", (req, res) => {
     res.render("addCourse");
 });
 
 app.get("/about", (req, res) => {
     res.render("about");
+});
+
+app.get("/", (req, res) => {
+    database.query("SELECT * FROM coursesDB", (err, results) => {
+        if (err) {
+            console.error('Fel vid hämtning av kurser: ' + err.stack);
+            return res.status(500).send("Ett fel uppstod när kurserna skulle hämtas.");
+        }
+        
+        res.render("index", { courses: results });
+    });
 });
 
 // Starta applikationen - vilken port servern ska lyssna på
@@ -28,7 +35,7 @@ const mysql = require('mysql2');
 const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Heavenknows14',
+    password: 'Kattenfindus1!',
     database: 'coursesDB'
 });
 
@@ -47,7 +54,7 @@ app.post("/addCourse", (req, res) => {
     const { courseName, courseCode, progression, coursePlan } = req.body;
 
     if (!courseName || !courseCode || !progression || !coursePlan) {
-        return res.send(400).send("Alla fält måste fyllas i.");
+        return res.status(400).send("Alla fält måste fyllas i.");
     }
 
     database.query(
@@ -61,15 +68,4 @@ app.post("/addCourse", (req, res) => {
             res.redirect("/");
         }
     );
-});
-
-app.get("/", (req, res) => {
-    database.query("SELECT * FROM courses", (err, results) => {
-        if (err) {
-            console.error('Fel vid hämtning av kurser: ' + err.stack);
-            return res.status(500).send("Ett fel uppstod när kurserna skulle hämtas.");
-        }
-        
-        res.render("index", { courses: results });
-    });
 });
