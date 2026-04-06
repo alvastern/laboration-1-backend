@@ -20,7 +20,15 @@
 
     <section>
         <h2>Dina kurser</h2>
-        <ul id="yourCourses"></ul>
+        <ul id="yourCourses">
+            <% courses.forEach(course => { %>
+                <li>
+                    <strong><%= course.coursename %></strong>
+                    (<%= course.coursecode %>) - <%= course.progression %>
+                    <a href="<%= course.syllabus %>" target="_blank">Kursplan</a>
+                </li>
+            <% }) %>
+        </ul>
     </section>
 
     <script src="/main.js"></script>

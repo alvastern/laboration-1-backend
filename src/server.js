@@ -21,3 +21,55 @@ app.get("/about", (req, res) => {
 app.listen(port, () => {
     console.log("Servern körs i porten " + port);
 });
+
+// Databasanslutning
+const mysql = require('mysql2');
+
+const database = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Heavenknows14',
+    database: 'coursesDB'
+});
+
+database.connect((err) => {
+    if (err) {
+        console.error('Fel vid anslutning till databasen: ' + err.stack);
+        return;
+    } else {
+        console.log('Ansluten till databasen');
+    }
+});
+
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/addCourse", (req, res) => {
+    const { courseName, courseCode, progression, coursePlan } = req.body;
+
+    if (!courseName || !courseCode || !progression || !coursePlan) {
+        return res.send(400).send("Alla fält måste fyllas i.");
+    }
+
+    database.query(
+        "INSERT INTO courses (courseName, courseCode, progression, coursePlan) VALUES (?, ?, ?, ?)",
+        [courseName, courseCode, progression, coursePlan],
+        (err, results) => {
+            if (err) {
+                console.error('Fel vid tillägg av kurs: ' + err.stack);
+                return res.status(500).send("Ett fel uppstod när kursen skulle läggas till.");
+            }
+            res.redirect("/");
+        }
+    );
+});
+
+app.get("/", (req, res) => {
+    database.query("SELECT * FROM courses", (err, results) => {
+        if (err) {
+            console.error('Fel vid hämtning av kurser: ' + err.stack);
+            return res.status(500).send("Ett fel uppstod när kurserna skulle hämtas.");
+        }
+        
+        res.render("index", { courses: results });
+    });
+});
