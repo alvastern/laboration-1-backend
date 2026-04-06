@@ -51,15 +51,15 @@ database.connect((err) => {
 app.use(express.urlencoded({ extended: true }));
 
 app.post("/addCourse", (req, res) => {
-    const { courseName, courseCode, progression, coursePlan } = req.body;
+    const { courseName, courseCode, prog, syll } = req.body;
 
-    if (!courseName || !courseCode || !progression || !coursePlan) {
+    if (!courseName || !courseCode || !prog || !syll) {
         return res.status(400).send("Alla fält måste fyllas i.");
     }
 
     database.query(
-        "INSERT INTO courses (courseName, courseCode, progression, coursePlan) VALUES (?, ?, ?, ?)",
-        [courseName, courseCode, progression, coursePlan],
+        "INSERT INTO coursesDB (course_name, course_code, progression, syllabus) VALUES (?, ?, ?, ?)",
+        [courseName, courseCode, prog, syll],
         (err, results) => {
             if (err) {
                 console.error('Fel vid tillägg av kurs: ' + err.stack);
