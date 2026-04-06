@@ -20,7 +20,7 @@
     <section>
         <h2>Lägg till kurs</h2>
 
-        <form>
+        <form id="courseForm">
             <label for="courseName">Kursnamn:</label>
             <input type="text" id="courseName" name="courseName" required>
 
@@ -31,10 +31,12 @@
             <input type="text" id="progression" name="progression" required>
 
             <label for="coursePlan">Kursplan:</label>
-            <input id="coursePlan" name="coursePlan" required></input>
+            <input id="coursePlan" name="coursePlan" required>
 
-            <button type="submit">Lägg till kurs</button>
+            <button type="submit" id="submitBtn">Lägg till kurs</button>
         </form>
     </section>
+
+    <script src="/main.js"></script>
 </body>
 </html>
