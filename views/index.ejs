@@ -26,6 +26,10 @@
                     <strong><%= course.course_name %></strong>
                     (<%= course.course_code %>) - <%= course.progression %>
                     <a href="<%= course.syllabus %>" target="_blank">Kursplan</a>
+
+                    <form action="/delete/<%= course.id %>" method="POST" style="display:inline;">
+                        <button type="submit">Radera</button>
+                    </form>
                 </li>
             <% }) %>
         </ul>

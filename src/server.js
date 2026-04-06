@@ -69,3 +69,19 @@ app.post("/addCourse", (req, res) => {
         }
     );
 });
+
+app.post("/delete/:id", (req, res) => {
+    const id = req.params.id;
+
+    database.query("DELETE FROM coursesDB WHERE id = ?",
+        [id],
+        (err) => {
+            if (err) {
+                console.error("Något gick fel", err);
+                return res.status(500).send("Kunde inte ta bort kurs");
+            }
+
+            res.redirect("/");
+        }
+    );
+});
