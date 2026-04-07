@@ -16,3 +16,24 @@
 #submitBtn:hover {
         background-color: #6d6d6d;
     }
+
+#remove-button {
+    background-color:rgb(173, 1, 35);
+    color: white;
+    border: none;
+    padding: 1.5vh 1vw;
+    font-weight: bold;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+#remove-button:hover {
+    background-color: $primary-grey;
+}
+
+@media (max-width: 1024px) {
+    #remove-button {
+        border-radius: 0.5rem;
+        margin-top: 2vh;
+    }
+}

@@ -44,3 +44,62 @@ nav ul {
     width: 70ch;
     line-height: 1.5;
 }
+
+#yourCourses {
+    margin: 0 5vw 5vh 5vw;
+    background-color: #e4e4e4;
+    padding: 2.5rem 5rem 2.5rem 0;
+    border-radius: 0.5rem;
+
+    li {
+        border-bottom: white solid 2px;
+        padding: 1.5rem;
+        margin: 0 5vw;
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        gap: 2vh;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1vh;
+    }
+
+    #courseForm {
+        margin: 5vh 5vw;
+    }
+
+    .text-paragraf {
+        margin: 0 5vw 5vh 5vw;
+        width: auto;
+    }
+
+    #yourCourses {
+        margin: 0 5vw 5vh 5vw;
+        padding: 3rem 1rem;
+
+        li {
+            flex-direction: column;
+            gap: 1vh;
+            align-items: flex-start;
+            padding: 2.5rem 1rem 2.5rem 0.5rem;
+        }
+    }
+
+    nav ul li a {
+        width: 95vw;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+        border-radius: 2px;
+    }
+}
