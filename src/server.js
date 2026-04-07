@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');  // Inkluderar express-paketet
 const app = express();  // Startar en express-applikation
 const port = 3000;  // Definierar porten som servern kommer att lyssna på
@@ -48,15 +50,19 @@ database.connect((err) => {
     }
 });
 
+// Hanterar den data som skickas från formuläret i addCourse.ejs
 app.use(express.urlencoded({ extended: true }));
 
+// Hanterar anropet när en kurs läggs till via formuläret i databasen
 app.post("/addCourse", (req, res) => {
     const { courseName, courseCode, prog, syll } = req.body;
 
+    // Valdering av datan som skickas in av användaren i formuläret
     if (!courseName || !courseCode || !prog || !syll) {
         return res.status(400).send("Alla fält måste fyllas i.");
     }
 
+    // Lägger till den nya kursen i databasen
     database.query(
         "INSERT INTO coursesDB (course_name, course_code, progression, syllabus) VALUES (?, ?, ?, ?)",
         [courseName, courseCode, prog, syll],
@@ -70,6 +76,7 @@ app.post("/addCourse", (req, res) => {
     );
 });
 
+// Tar bort en kurs från databasen när en användare klickar på ta-bort knappen
 app.post("/delete/:id", (req, res) => {
     const id = req.params.id;
 

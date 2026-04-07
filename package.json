@@ -7,7 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "node src/server.js",
-    "dev:server": "nodemon src/server.js"
+    "dev:server": "nodemon src/server.js",
+    "sass": "sass public/css/main.scss public/css/main.css --watch"
   },
   "devDependencies": {
     "vite": "^8.0.1"
