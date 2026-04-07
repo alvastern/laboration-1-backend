@@ -57,9 +57,14 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/addCourse", (req, res) => {
     const { courseName, courseCode, prog, syll } = req.body;
 
-    // Valdering av datan som skickas in av användaren i formuläret
+    // Valdering för att kontrollera så att alla fält är ifyllda
     if (!courseName || !courseCode || !prog || !syll) {
         return res.status(400).send("Alla fält måste fyllas i.");
+    }
+
+    // Validering för att kontrollera så att progression är antingen A, B eller C
+    if (!["A", "B", "C"].includes(prog.toUpperCase())) {
+        return res.status(400).send("Progression måste vara A, B eller C.");
     }
 
     // Lägger till den nya kursen i databasen
