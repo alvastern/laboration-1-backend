@@ -8,31 +8,41 @@
 </head>
 
 <body>
-    <h1>Mitt CV</h1>
+    <header>
+        <h1>Mitt CV</h1>
 
-    <nav>
-        <ul>
-            <li><a href="/">Mina kurser</a></li>
-            <li><a href="/addCourse">Lägg till kurs</a></li>
-            <li><a href="/about">Om sidan</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li><a href="/">Mina kurser</a></li>
+                <li><a href="/addCourse">Lägg till kurs</a></li>
+                <li><a href="/about">Om sidan</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <section>
         <h2>Lägg till kurs</h2>
 
         <form id="courseForm" action="/addCourse" method="POST">
-            <label for="courseName">Kursnamn:</label>
-            <input type="text" id="courseName" name="courseName" required>
+            <div>
+                <label for="courseName">Kursnamn:</label>
+                <input type="text" id="courseName" name="courseName" required>
+            </div>
 
-            <label for="courseCode">Kurskod:</label>
-            <input type="text" id="courseCode" name="courseCode" required>
+            <div>
+                <label for="courseCode">Kurskod:</label>
+                <input type="text" id="courseCode" name="courseCode" required>
+            </div>
 
-            <label for="prog">Kursprogression:</label>
-            <input type="text" id="prog" name="prog" required>
+            <div>
+                <label for="prog">Kursprogression:</label>
+                <input type="text" id="prog" name="prog" required>
+            </div>
 
-            <label for="syll">Kursplan:</label>
-            <input type="text" id="syll" name="syll" required>
+            <div>
+                <label for="syll">Kursplan:</label>
+                <input type="text" id="syll" name="syll" required>
+            </div>
 
             <button type="submit" id="submitBtn">Lägg till kurs</button>
         </form>
