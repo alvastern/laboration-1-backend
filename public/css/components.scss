@@ -1,0 +1,18 @@
+@use './layout' as *;
+
+#submitBtn {
+    margin-top: 5vh;
+    width: 15rem;
+    color: white;
+    background-color: $primary-grey;
+    border: none;
+    padding: 1.5vh 1vw;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#submitBtn:hover {
+        background-color: #6d6d6d;
+    }
